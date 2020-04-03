@@ -9,6 +9,8 @@
 
 TinaX Framework 是基于Unity引擎的简单、完整的、开箱即用的开发框架。TinaX的目标是制作一个可以让一个团队、公司“从小用到大”的框架。
 
+?> 大陆地区用户：本文档站点托管于`GitHub Pages`, 部分地区用户可能无法正常加载文档中的图片。我们已通过CDN尽可能解决该问题，如果您所在的地区依然无法加载图片，请尝试访问该文档的镜像站点：[tinax.nekonya.io](https://tinax.nekonya.io)
+
 ## 运行环境
 
 **Unity**
@@ -19,6 +21,12 @@ TinaX Framework 是基于Unity引擎的简单、完整的、开箱即用的开�
 **C# 版本**
 - Unity Api Compatibility Level: `.NET 4.X`/`.NET Standard 2.0` 
 - C# `7.2`
+
+## 快速上手
+
+您可通过以下Demo快速了解TinaX的大致：
+
+- [Hello World (C#)](cmn-hans/quick_start/hello_world_csharp.md)
 
 ## 功能概述
 
@@ -37,6 +45,8 @@ TinaX 中分布在各个包中、功能单一的模块称为服务（`Service`�
 - 仓库地址：[https://github.com/yomunsam/TinaX.Core](https://github.com/yomunsam/TinaX.Core)
 - 大陆镜像仓库: [https://gitee.com/nekonyas/TinaX.Core](https://gitee.com/nekonyas/TinaX.Core)
 - 包名: `io.nekonya.tinax.core`
+
+<br>
 
 ### TinaX.VFS
 
