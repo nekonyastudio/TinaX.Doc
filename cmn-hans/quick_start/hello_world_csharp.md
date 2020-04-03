@@ -51,7 +51,7 @@
 
 ![UPM](_media/download_package.png)
 
-解压下载到的包文件后，在我们之前打开的UPM遍布的左上角点击加号按钮，选择Add package from disk的方式添加即可。
+解压下载到的包文件后，在我们之前打开的UPM面板的左上角点击加号按钮，选择Add package from disk的方式添加即可。
 
 ### 需要导入
 
