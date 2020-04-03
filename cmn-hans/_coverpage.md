@@ -7,5 +7,5 @@
 
 
 [GitHub](https://github.com/yomunsam/tinax/)
-[快速开始](cmn-hans/quick_start.md)
+[开始](#TinaX)
 [旧版文档](/legacy_doc/index.html ':ignore :target=_blank')
