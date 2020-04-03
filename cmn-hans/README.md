@@ -46,6 +46,8 @@ TinaX 中分布在各个包中、功能单一的模块称为服务（`Service`�
 - 大陆镜像仓库: [https://gitee.com/nekonyas/TinaX.VFS](https://gitee.com/nekonyas/TinaX.VFS)
 - 包名：`io.nekonya.tinax.vfs`
 
+<br>
+
 ### TinaX.UIKit
 
 UIKit为TinaX提供了基于UGUI的UI管理服务，如打开、关闭、隐藏UI、全屏UI互相避让、UI启动参数等。同时提供对组件的扩展、可扩展的UI动画等相关内容。
@@ -53,6 +55,8 @@ UIKit为TinaX提供了基于UGUI的UI管理服务，如打开、关闭、隐藏U
 - 仓库地址: [https://github.com/yomunsam/TinaX.UIKit](https://github.com/yomunsam/TinaX.UIKit)
 - 大陆镜像地址：[https://gitee.com/nekonyas/TinaX.UIKit](https://gitee.com/nekonyas/TinaX.UIKit)
 - 包名：`io.nekonya.tinax.uikit`
+
+<br>
 
 ### TinaX.I18N
 
@@ -62,6 +66,8 @@ UIKit为TinaX提供了基于UGUI的UI管理服务，如打开、关闭、隐藏U
 - 大陆镜像地址：[https://gitee.com/nekonyas/TinaX.I18N](https://gitee.com/nekonyas/TinaX.I18N)
 - 包名：`io.nekonya.tinax.i18n`
 
+<br>
+
 ### TinaX.Lua
 
 为TinaX提供Lua语言的开发运行环境。该服务基于`Tencent/xLua`开发。
@@ -69,3 +75,25 @@ UIKit为TinaX提供了基于UGUI的UI管理服务，如打开、关闭、隐藏U
 - 仓库地址: [https://github.com/yomunsam/TinaX.Lua](https://github.com/yomunsam/TinaX.Lua)
 - 大陆镜像地址：[https://gitee.com/nekonyas/TinaX.Lua](https://gitee.com/nekonyas/TinaX.Lua)
 - 该部分内容需直接导入到工程`Assets`目录中，不以包形式提供
+
+<br>
+
+### TinaX.ILRuntime
+
+为TinaX提供可热更新的C#运行环境。该服务基于`ILRuntime`开发。
+
+- 仓库地址：[https://github.com/yomunsam/TinaX.ILRuntime](https://github.com/yomunsam/TinaX.ILRuntime)
+- 大陆镜像地址：[https://gitee.com/nekonyas/TinaX.ILRuntime](https://gitee.com/nekonyas/TinaX.ILRuntime)
+- 包名：`io.nekonya.tinax.ilruntime`
+
+?> 大陆镜像地址推荐仅供应急情况使用, 它可能会比Github仓库的版本略有延迟。并且镜像仓库会关闭fork, issues和pr功能，请使用Github进行相关操作。
+
+<br>
+
+------
+
+## 优秀的Unity项目安利
+
+- **[QFramework](https://github.com/liangxiegame/QFramework)** : 一套渐进式的快速开发框架
+- **[xasset](https://github.com/xasset/xasset)** : 一个简易轻量的Unity资源管理框架
+- **[CatLib](https://github.com/CatLib/Core)** : 轻量级依赖注入框架
