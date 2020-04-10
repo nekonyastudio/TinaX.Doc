@@ -2,5 +2,6 @@
 - [TinaX.Lua](/cmn-hans/lua/README.md)
 - 手册
     - [table变动](/cmn-hans/lua/manual/getset.md)
+    - [class](/cmn-hans/lua/manual/class.md)
 - API
     - [table 扩展](/cmn-hans/lua/api/table.md)
