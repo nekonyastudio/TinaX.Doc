@@ -3,5 +3,6 @@
 - 手册
     - [table变动](/cmn-hans/lua/manual/getset.md)
     - [class](/cmn-hans/lua/manual/class.md)
+    - [Log](/cmn-hans/lua/manual/log.md)
 - API
     - [table 扩展](/cmn-hans/lua/api/table.md)
