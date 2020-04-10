@@ -4,6 +4,7 @@
 [![LICENSE](../_media/996icu_license.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu"></a>
 [![LICENSE](../_media/AGPL3_license.svg)](https://github.com/yomunsam/TinaX/blob/master/LICENSE)
+![GitHub stars](https://img.shields.io/github/stars/yomunsam/Tinax?style=flat-square)
 
 ?> 为美好的游戏献上Framework!
 
