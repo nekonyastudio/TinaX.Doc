@@ -43,15 +43,19 @@ TinaX 中分布在各个包中、功能单一的模块称为服务（`Service`�
 
 `TinaX.Core`是TinaX Framework的基础包，它负责启动、管理所有的Service，提供通用的基础功能，提供事件系统、依赖注入等。
 
+
 - 仓库地址：[https://github.com/yomunsam/TinaX.Core](https://github.com/yomunsam/TinaX.Core)
 - 大陆镜像仓库: [https://gitee.com/nekonyas/TinaX.Core](https://gitee.com/nekonyas/TinaX.Core)
 - 包名: `io.nekonya.tinax.core`
+- [访问文档](/cmn-hans/core/README.md)
+    - [事件系统](/cmn-hans/core/manual/event.md)
 
 <br>
 
 ### TinaX.VFS
 
 虚拟文件系统（VFS）是TinaX的资源管理服务，它在运行时中模拟了Unity工程中"Assets/xxx"的目录结构，实现了资源的加载、依赖管理、版本管理与更新、内存gc等。
+
 
 - 仓库地址：[https://github.com/yomunsam/TinaX.VFS](https://github.com/yomunsam/TinaX.VFS)
 - 大陆镜像仓库: [https://gitee.com/nekonyas/TinaX.VFS](https://gitee.com/nekonyas/TinaX.VFS)

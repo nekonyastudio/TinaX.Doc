@@ -2,4 +2,7 @@
 - [TinaX.Core](/cmn-hans/core/README.md)
 - 手册
     - [事件系统](/cmn-hans/core/manual/event.md)
+    - 内置服务接口
+        - [资源接口](/cmn-hans/core/manual/IAssetService.md)
 - API
+    - [IXCore](/cmn-hans/core/api/IXCore.md)
