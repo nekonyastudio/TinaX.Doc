@@ -1,6 +1,7 @@
 - [TinaX 首页](/cmn-hans/#TinaX)
 - [TinaX.Core](/cmn-hans/core/README.md)
 - 手册
+    - [XCore](/cmn-hans/core/manual/XCore.md)
     - [事件系统](/cmn-hans/core/manual/event.md)
     - 内置服务接口
         - [资源接口](/cmn-hans/core/manual/IAssetService.md)
