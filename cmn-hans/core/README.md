@@ -18,8 +18,8 @@ git://github.com/yomunsam/TinaX.Core.git
 
 `TinaX.Core`依赖如下包，请在安装本包前确保以下包已被安装：
 
-- [com.neuecc.unirx](https://github.com/yomunsam/UniRx.UPM) :`git://github.com/yomunsam/UniRx.UPM.git`
-- [com.cysharp.unitask](https://github.com/yomunsam/UniTask.UPM) :`git://github.com/yomunsam/UniTask.UPM.git`
+- [com.neuecc.unirx](https://github.com/neuecc/UniRx#upm-package) :`https://github.com/neuecc/UniRx.git?path=Assets/Plugins/UniRx/Scripts`
+- [com.cysharp.unitask](https://github.com/yomunsam/UniTask.UPM#install-via-git-url) :`https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask`
 
 ## 功能
 
