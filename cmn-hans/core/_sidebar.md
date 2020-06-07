@@ -1,8 +1,11 @@
 - [TinaX 首页](/cmn-hans/#TinaX)
 - [TinaX.Core](/cmn-hans/core/README.md)
 - 手册
+    - [常见问题(F&Q)](/cmn-hans/core/manual/FAQ.md)
     - [XCore](/cmn-hans/core/manual/XCore.md)
     - [事件系统](/cmn-hans/core/manual/event.md)
+    - [TimeMachine](/cmn-hans/core/manual/timeMachine.md)
+    - [DisposableGroup](/cmn-hans/core/manual/DisposableGroup.md)
     - 内置服务接口
         - [资源接口](/cmn-hans/core/manual/IAssetService.md)
 - API
