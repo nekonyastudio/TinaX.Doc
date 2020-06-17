@@ -12,8 +12,9 @@ Unity-based Game Client Framework
 
 [![LICENSE](../_media/996icu_license.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu"></a>
-[![LICENSE](../_media/AGPL3_license.svg)](https://github.com/yomunsam/TinaX/blob/master/LICENSE)
+[![LICENSE](https://camo.githubusercontent.com/890acbdcb87868b382af9a4b1fac507b9659d9bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667)](https://github.com/yomunsam/TinaX/blob/master/LICENSE)
 ![GitHub stars](https://img.shields.io/github/stars/yomunsam/Tinax?style=flat-square)
+<!-- [![LICENSE](../_media/AGPL3_license.svg)](https://github.com/yomunsam/TinaX/blob/master/LICENSE) -->
 
 TinaX Framework is a simple, complete, out-of-the-box development framework based on the Unity engine. TinaX's goal is to be a framework that adapts to different project and team sizes.
 

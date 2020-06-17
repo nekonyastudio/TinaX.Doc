@@ -53,3 +53,8 @@ TinaX.Lua自身不管理和加载项目中所需的Lua文件，而是调用框�
 2. 框架启动时，必须有服务实现了框架内置资源接口，且该服务的启动次序应该在TinaX.Lua之前（即启动次序小于`100`). （比如直接使用TinaX.VFS即可。）
 
 详请阅读文档：[内置资源接口](/cmn-hans/core/manual/IAssetService)
+
+
+### TinaX Lua 扩展
+
+更好的在Lua中使用TinaX的各个Packages，推荐使用 TinaX Lua 扩展， 详细说明[请点击此处查看文档](/cmn-hans/lua_extension/README.md)
