@@ -9,60 +9,41 @@
 
 ## 导入包
 
-需要实现这样一个效果，我们需要导入一些TinaX的包：
+TinaX依据功能，将内容拆分进了各个不同的包中。在使用时，我们仅需导入需要的部分包即可。
 
-**`TinaX.Core`** ：Core包是TinaX一切的基础，不管我们要做什么，首先都得导入它。
+### TinaX.Core
 
-我们可以在该包的**[仓库页面](https://github.com/yomunsam/TinaX.Core)**中看到该包的地址和*依赖信息*。
+`TinaX.Core`是TinaX服务的核心包，它是一切功能的基础，是几乎必定要导入的包。
 
-![依赖信息](_media/xcore_dependencies.png)
+?> 下面的操作中，我们使用npm的方式导入包，这是安装使用TinaX的众多方式之一。关于安装TinaX包的完整说明，以及特殊地区特殊网络环境的事项，请阅读文档 ：[在项目中安装TinaX](cmn-hans/install)
 
-我们看到，`TinaX.Core`包依赖了`UniRx`和`UniTask`两个包。而在导入`TinaX.Core`包之前，我们就一定得先导入这两个依赖包。
+我们在Unity工程的`Packages/manifest.json`文件中，添加如下内容：
 
-?> 由于`UniRx`和`UniTask`目前官方并未提供UPM包，因此目前文档中给出的包是TinaX的作者自己做的。
+``` json
+"scopedRegistries": [
+    {
+        "name": "TinaX",
+        "url": "https://registry.npmjs.org",
+        "scopes": [
+            "io.nekonya"
+        ]
+    },
+    {
+        "name": "package.openupm.com",
+        "url": "https://package.openupm.com",
+        "scopes": [
+            "com.cysharp.unitask",
+            "com.neuecc.unirx"
+        ]
+    }
+],
+```
 
-“包”的概念是近期Unity新增的内容，对于不少开发者来说，可能还是比较陌生的。那么，我们要如何把包导入到我们的项目中呢？
+然后打开Unity的UPM面板，（在Unity2020.x版本中需要切换到"Packages: My Registries"），我们即可看到TinaX的各个功能包。
 
-这里介绍两个方法：`使用Git` 和 `直接导入文件`
+![image-20200925113358468](hello_world_csharp.assets/image-20200925113358468.png)
 
-首先，我们先按下图所示，在Unity的菜单中`Window->Package Manager`项中打开UPM面板。
-
-![UPM](_media/unity_upm_1.png)
-
-#### 使用Git
-
-在TinaX相关包的仓库页面中，我们可以找到该包及其对应依赖的*Git地址*。
-
-![UPM](_media/xcore_git_upm_addr.png)
-
-将该地址复制后，点击之前打开的UPM面板左上角的加号按钮，选择`Add package from git URL`项，粘贴地址，点击“Add”按钮之后稍等片刻，添加成功。(注意粘贴的地址中不要有多余的空格)
-
-之后，我们会在UPM面板中观察到我们需要的包已经被导入到项目中
-
-![UPM](_media/upm_installed.png)
-
-!> 不过要注意的是，使用Git方式导入包，需要您的电脑已安装并可正常在命令行中使用git, 如果不具备相关条件，可使用直接导入文件的方式添加包。
-
-?> 在多人协作的项目中，我们推荐使用git方式或openupm方式来使用package.
-
-#### 直接导入文件
-
-在相关包的仓库页面，我们可以找到“Clone or download”按钮，这样我们就可以把包下载到本地。
-
-![UPM](_media/download_package.png)
-
-解压下载到的包文件后，在我们之前打开的UPM面板的左上角点击加号按钮，选择Add package from disk的方式添加即可。
-
-### 需要导入
-
-在本Demo中，我们一共需要导入以下包： 
-
-- **[UniRx](https://github.com/yomunsam/UniRx.UPM)** : `git://github.com/yomunsam/UniRx.UPM.git` 第三方依赖
-- **[UniTask](https://github.com/yomunsam/UniTask.UPM)** : `git://github.com/yomunsam/UniTask.UPM.git` 第三方依赖
-- **[TinaX.Core](https://github.com/yomunsam/TinaX.Core)** `git://github.com/yomunsam/TinaX.Core.git` TinaX的核心库
-- **[TinaX.VFS](https://github.com/yomunsam/TinaX.VFS)** `git://github.com/yomunsam/TinaX.VFS.git` TinaX的资源管理服务包
-- **[TinaX.XComponent](https://github.com/yomunsam/tinax.XComponent)** `git://github.com/yomunsam/TinaX.XComponent.git` TinaX中UIKit的依赖包
-- **[TinaX.UIKit](https://github.com/yomunsam/TinaX.UIKit)** `git://github.com/yomunsam/TinaX.UIKit.git` TinaX中的UI服务
+在本案例中，我们需要安装`TinaX.Core`、`TinaX.UIKit`、`TinaX.VFS`三个包，（UPM会自动安装这三个包对应的依赖，不需要手动处理）
 
 <br>
 
@@ -109,11 +90,47 @@ namespace Nekonya.Example
 await core.RunAsync();
 ```
 
+或使用回调方式:
+
+``` csharp
+core.RunAsync(error =>
+{
+    if(error != null)
+    {
+        //xxxxxx
+    }
+});
+```
+
+### 使用简化方式注册服务提供者
+
+在上述代码中，我们使用`RegisterServiceProvider(new VFSProvider())`的方式注册了服务提供者，而在新版本中，TinaX的第一方Packages都提供了`UseXXX`简化形式来封装注册方法。上述代码我们可以简化如下：
+
+``` csharp
+private async void Start()
+{
+    var core = XCore.New()
+    .UseVFS()
+    .UseUIKit()
+    .OnServicesStartException((service, err) =>
+    {
+        //
+    });
+    await core.RunAsync();
+}
+```
+
+（关于各个服务模块提供了哪些简化方式，请参阅对应服务模块的文档）
+
+
+<br>
+
 ![image-20200403174549551](hello_world_csharp.assets/image-20200403174549551.png)
 
 最后，我们把写好的组件挂载到场景中某个`GameObject`上，就完成了TinaX的启动工作。
 
 
+<br>
 
 ## 跟随TinaX的生命周期
 
@@ -155,6 +172,7 @@ namespace Nekonya.Example
 
 **`OnStart`**: 当`OnStart`服务被调用时，XCore中所有的服务均已启动完成，或者我们可以理解为，整个TinaX都已启动完成。也就是说，我们可以用`OnStart`作为业务逻辑开始的入口。
 
+<br>
 
 
 ## 开始制作UI吧
@@ -270,7 +288,7 @@ namespace Nekonya.Example
         {
             btn_1.onClick.AddListener(async () =>
             {
-                await _UIKit.OpenUIAsync<MsgBox>("msgBox", 
+                await UIKit.OpenUIAsync("msgBox", new MsgBox(),
                     new OpenUIParam() { UseMask = true, CloseByMask = true }, 
                     "hello,world!", "hello");
             });
@@ -295,7 +313,7 @@ namespace Nekonya.Example
 在`Start`中，我们调用了`OpenUIAsync`方法，该方法的原型是:
 
 ``` csharp
-Task<IUIEntity> OpenUIAsync<T>(string UIName, OpenUIParam openUIParam, params object[] args) where T : XBehaviour
+Task<IUIEntity> OpenUIAsync(string UIName, XBehaviour behaviour, OpenUIParam openUIParam, params object[] args)
 ```
 
 <br>
@@ -308,7 +326,9 @@ Task<IUIEntity> OpenUIAsync<T>(string UIName, OpenUIParam openUIParam, params ob
 
 我们看本例最开始的效果图，当我们打开“msgBox”这个UI时，UI后面的背景变暗了，这个就是UI遮罩效果，而“点击空白处关闭窗口”的功能，就是“CloseByMask”的效果。
 
-泛型参数`MsgBox`传递的是一个继承自`XBehaviour`的类，它和我们当前正在写的`MainScreen`类是一样的，`MsgBox`类负责另一个UI“MsgBox”的逻辑内容。
+参数`behaviour`传递一个作为我们将要打开的这个UI的处理者对象。（熟悉MVC的读者可以先*粗略地*理解为我们传递了一个controller对象）
+
+<!-- 泛型参数`MsgBox`传递的是一个继承自`XBehaviour`的类，它和我们当前正在写的`MainScreen`类是一样的，`MsgBox`类负责另一个UI“MsgBox”的逻辑内容。 -->
 
 `MsgBox`类的代码如下：
 
@@ -373,14 +393,14 @@ public async void OnStart()
 {
     //open ui
     var uikit = XCore.MainInstance.GetService<IUIKit>(); //从XCore的全局单例中获取UIKit服务的接口
-    await uikit.OpenUIAsync<MainScreen>("mainScreen"); 
+    await uikit.OpenUIAsync("mainScreen", new MainScreen()); 
 }
 ```
 
 在这里的`OpenUIAsync`的方法原型和上面有点不一样了，不需要传递`OpenUIParam`:
 
 ``` csharp
-Task<IUIEntity> OpenUIAsync<T>(string UIName, params object[] args) where T : XBehaviour
+Task<IUIEntity> OpenUIAsync(string UIName, XBehaviour behaviour, params object[] args)
 ```
 
 <br>
@@ -407,13 +427,15 @@ Task<IUIEntity> OpenUIAsync<T>(string UIName, params object[] args) where T : XB
 
 打开Unity编辑器的Project Settings 面板 （菜单`Edit-> Project Settings`)，找到`TinaXFramework -> X UIKit`设置项。
 
-![image-20200403195252774](hello_world_csharp.assets/image-20200403195252774.png)
+![image-20200925115444611](hello_world_csharp.assets/image-20200925115444611.png)
+
+
 
 勾选“启用UIKit”，设置“UI命名模式”为使用UIGroup，并把我们刚刚的UI Group设置进去。
 
 勾选“使用UICamera”, 并把我们一开始的创建的`UI Camera Config`设置进去，
 
-（下方的“UI Image Folders”的用途是，编辑器下我们把图片文件导入进Unity的时候，设定目录中的图片文件会自动设置成`Sprite`格式。一个单纯的编辑器功能，没其他作用）
+（下方的“UI图片目录”的用途是，编辑器下我们把图片文件导入进Unity的时候，设定目录中的图片文件会自动设置成`Sprite`格式，并且勾选“图集”选项的目录中，会自动创建`SpriteAtlas`配置文件。）
 
 
 
