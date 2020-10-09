@@ -4,6 +4,7 @@
     - [常见问题(F&Q)](/cmn-hans/core/manual/FAQ.md)
     - [XCore](/cmn-hans/core/manual/XCore.md)
     - [依赖注入](/cmn-hans/core/manual/DependencyInjection.md)
+    - [配置框架](/cmn-hans/core/manual/Configuration.md)
     - [事件系统](/cmn-hans/core/manual/event.md)
     - [TimeMachine](/cmn-hans/core/manual/timeMachine.md)
     - [DisposableGroup](/cmn-hans/core/manual/DisposableGroup.md)
