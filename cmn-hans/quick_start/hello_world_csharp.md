@@ -288,7 +288,7 @@ namespace Nekonya.Example
         {
             btn_1.onClick.AddListener(async () =>
             {
-                await UIKit.OpenUIAsync("msgBox", new MsgBox(),
+                await _UIKit.OpenUIAsync("msgBox", new MsgBox(),
                     new OpenUIParam() { UseMask = true, CloseByMask = true }, 
                     "hello,world!", "hello");
             });
