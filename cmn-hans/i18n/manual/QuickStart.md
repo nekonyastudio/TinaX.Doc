@@ -105,3 +105,85 @@ TinaX I18N 基于key/value的形式提供国际化文本功能。接下来，我
 
 ![switchReg](QuickStart.assets/switchReg.gif)
 
+<br>
+
+<br>
+
+## 使用代码获取国际化文本
+
+在上述的操作中，我们使用组件实现了UI的多语言切换，但是这在实际开发中远远不够，我们还需要通过代码来获取国际化文本。
+
+实际上很简单，通过依赖注入或者其他方式得到TinaX I18N的服务接口`II18N`，使用如下方法：
+
+``` csharp
+using TinaX;
+using TinaX.I18N;
+
+[Inject] public II18N _I18N { get; set; } //在可被依赖注入的类中获取II18N接口
+
+var _I18N = XCore.MainInstance.Services.Get<II18N>(); //手动从服务容器中获取II18N接口
+
+var text = _I18N.GetText("i18n key"); //获取国际化文本
+```
+
+GetText的方法原型如下：
+``` csharp
+string GetText(string key, string groupName = "commond", string defaultText = null);
+```
+
+<br>
+
+## 在代码中切换地区
+
+在编辑器中，我们可以通过编辑器右上角的按钮切换地区。那么如果我们要把切换地区的功能做进游戏/应用里要怎么做呢，同样在`II18N`接口中：
+
+``` csharp
+Task UseRegionAsync(string regionName);
+```
+
+由于在中大型项目的推荐最佳实践中，我们会采用json文件来定义i18n字典，所以切换区域的过程中伴随着资产加载的过程。因此切换区域的方法是异步的，同样我们也提供了回调（callback）形式的异步方法：
+
+``` csharp
+void UseRegionAsync(string regionName, Action<XException> callback);
+```
+
+<br>
+
+## 使用Json作为I18N字典
+
+在中大型项目的最佳实践中，我们推荐采用json文件来定义i18n字典，原因如下：
+
+1. 使用Unity `.asset`文件作为字典时，无法热更新，且会在项目启动后加载所有字典文件到内存中。
+2. 在一定规模的团队中，分工明确，通常不会在Unity中编辑文案，而是在Excel、内部文案系统等软件中专门专人编写，并通过工具导出到客户端/服务端，使用Json文件更符合专业团队的工作流程。
+
+接下来，我们试试把一开始创建的`.asset`形式的字典替换成Json字典，TinaX I18N框架中读取的Json文件格式如下：
+
+``` json
+{
+    "data":[
+        //key value ...
+        {"k":"hello" , "v": "hello world"}
+    ]
+}
+```
+
+全部替换之后如下：
+
+![image-20201105162735357](QuickStart.assets/image-20201105162735357.png)
+
+
+换成Json之后，I18N框架会在某个区域被使用时才加载某个区域的字典文件。
+
+I18N框架使用`TinaX 内置服务接口`中的[资源接口](/cmn-hans/core/manual/IAssetService) 来加载这些Json文件，这也就意味着，我们的框架中需要有一个实现了内置资源接口的服务，比如[TinaX.VFS](/cmn-hans/vfs/README). 本案例以使用了`TinaX.VFS`服务为例。
+
+> 关于TinaX内置服务接口的详细介绍，请参考文档：[TinaX.Core 内置资源服务接口](/cmn-hans/core/manual/IAssetService)
+
+接下来，我们需要打开`Project Settings`， 把我们新创建的json文件的加载路径配置到对应的区域中：
+
+![image-20201105163629113](QuickStart.assets/image-20201105163629113.png)
+
+因为本案例使用了`TinaX.VFS`来管理加载资产，所以我们还需要将Json文件所在的路径添加到可被VFS框架管理的白名单中
+
+![image-20201105163819295](QuickStart.assets/image-20201105163819295.png)
+
+最后重新运行，我们可以观察到I18N框架依然如之前一样正常运行。
