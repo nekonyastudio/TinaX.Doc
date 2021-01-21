@@ -25,7 +25,10 @@
 我们可以使用`IBindData Bind<TService, TConcrete>()`方法来绑定服务，例如：
 
 ``` csharp
-public interface IMeow {}
+public interface IMeow
+{
+    void SayMeow();
+}
 public class Meow : IMeow
 {
     public void SayMeow() { }
@@ -71,6 +74,115 @@ core.Services.Instance<IMeow>(meow);
 **被注册的对象是以单例模式存在的**，即每次获取`IMeow`时，都会得到我们注册进去的同一个对象。
 
 <br>
+
+------
+
+## 被注册的服务类
+
+比如说有个类 `MeowA`
+
+``` csharp
+public interface IMeowA
+{
+    string SayMeow();
+}
+
+public class MeowA : IMeowA
+{
+    public string SayMeow()
+    {
+        Debug.Log("Meow");
+    }
+}
+```
+
+我们事先把类`MeowA`注册进服务容器：
+
+``` csharp
+IXCore core = XCore.GetMainInstance();
+core.Services.Bind<IMeow, Meow>();
+```
+
+接下来我们再写一个类`MeowB`, 注意，这里的`MeowB`也是要注册进服务容器的，并且通过服务容器获取到`MeowB`.
+
+或者说，`MeowB`也是被依赖注入系统所管理的类, 那么，在`MeowB`类中，我们就可以使用更简单的方式来获取到`MeowA`.
+
+### 通过构造函数注入
+
+``` csharp
+public class MeowB
+{
+    private readonly IMeowA _MeowA;
+
+    public MeowB(IMeowA meowA)
+    {
+        //通过构造函数获取到服务容器中的其他服务
+        _MeowA = meowA;
+    }
+}
+```
+当我们从依赖注入服务中获取`MeowB`的对象时，依赖注入服务会自动对构造函数中的参数进行赋值。
+
+> 注意，只有构造函数为公开(`public`)时才能够被注入。
+
+<br>
+
+### 通过属性选择器或变量注入
+
+服务容器采用`特性标记(Attribute)`的方法来标识那些属性或变量是允许被注入的。
+
+``` csharp
+using TinaX;
+
+public class MeowB
+{
+    [Inject] //依赖注入标记
+    public IMeowA _MeowA {get;set;}
+}
+```
+
+任何可以被注入的属性选择器或变量比如满足以下规则：
+- 变量或属性选择器必须标记`[Inject]`特性
+- 属性选择器`set;`的访问级别必须为`public`.
+- 变量的访问级别比如为`public`
+
+!> 注意，不可以在`构造函数`中访问（调用）被标记为注入的`属性选择器`或`变量`的实例，因为属性选择器或变量的注入流程会在构造函数之后进行，如果您在构造函数中访问了标记为注入的属性选择器，这将会导致一个`NullReferenceException`异常。
+
+<br>
+
+------
+### 对已存在的对象进行注入
+
+对于一个已存在的对象，如下
+
+``` csharp
+using TinaX;
+
+public class MeowB
+{
+    [Inject] //依赖注入标记
+    public IMeowA _MeowA {get;set;}
+}
+
+var mB = new MeowB(); //已经实例化的对象
+```
+
+当对象被实例化的时候，对象中的`_MeowA`理所当然是空的。
+这时候，我们也可以对它进行依赖注入处理。
+
+``` csharp
+var mB = new MeowB(); //已经实例化的对象
+
+IXCore core = XCore.GetMainInstance();
+core.Services.Inject(mB); //对已实例化的对象进行依赖注入处理
+```
+
+执行操作之后，`mB`中的`_MeowA`既被赋值。
+
+
+<br>
+
+------
 
 <br>
 
