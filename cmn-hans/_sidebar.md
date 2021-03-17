@@ -1,6 +1,6 @@
 - [TinaX](/cmn-hans/)
 <!-- - 入门 -->
-- [安装TinaX](/cmn-hans/install.md)
+- [安装TinaX](/cmn-hans/tinax/install/install_tinax.md)
 - 服务模块
     - [TinaX.Core](/cmn-hans/core/README.md)
     - [TinaX.VFS](/cmn-hans/vfs/README.md)

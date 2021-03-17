@@ -18,9 +18,9 @@ TinaX Framework 是基于Unity引擎的简单、完整的、开箱即用的开�
 ## 运行环境
 
 **Unity**
-- 当前TinaX开发版本：`Unity 2020.1.xf1`
-- 推荐用于生产环境的版本：`Unity 2019.4.x LTS` 或 `Unity 2020.1.x`
-- 理论最低兼容版本：`Unity 2019.3.x`
+- 当前TinaX开发版本：`Unity 2020.3.x`
+- 推荐用于生产环境的版本：`Unity 2020.3.x LTS`
+- 理论最低兼容版本：`Unity 2019.4.x`
 
 **C# 版本**
 - Unity Api Compatibility Level: `.NET 4.X`/`.NET Standard 2.0` 
@@ -38,43 +38,9 @@ TinaX Framework 是基于Unity引擎的简单、完整的、开箱即用的开�
 
 ## 安装TinaX
 
->关于安装TinaX的详细说明和问题，请参考文档页面：[在项目中安装TinaX](cmn-hans/install)
+请参考文档页面：[在项目中安装TinaX](cmn-hans/tinax/install/install_tinax)
 
-### 通过Unity Package Manager (UPM)安装
 
-在您的Unity项目中的`Packages/manifest.json`文件中，添加如下内容：
-
-``` json
-"scopedRegistries": [
-    {
-        "name": "TinaX",
-        "url": "https://registry.npmjs.org",
-        "scopes": [
-            "io.nekonya"
-        ]
-    },
-    {
-        "name": "package.openupm.com",
-        "url": "https://package.openupm.com",
-        "scopes": [
-            "com.cysharp.unitask",
-            "com.neuecc.unirx"
-        ]
-    }
-],
-```
-
-### 通过OpenUPM方式
-
-``` bash
-openupm add package name
-```
-
-### 通过Git Upm方式
-
-详见文档 [在项目中安装TinaX](cmn-hans/install)
-
-<br>
 
 ## 功能概述
 
