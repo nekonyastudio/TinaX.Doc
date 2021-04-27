@@ -7,3 +7,4 @@
     - [TinaX.I18N](/cmn-hans/i18n/README.md)
     - [TinaX.Lua](/cmn-hans/lua/README.md)
         - [Lua扩展](/cmn-hans/lua_extension/README.md)
+    - [TinaX.ILRuntime](/cmn-hans/ilruntime/README.md)
