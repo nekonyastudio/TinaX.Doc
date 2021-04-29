@@ -81,7 +81,7 @@ Unity Package Manaer是自`Unity 2018.1.x`版本开始提供的内容，而TinaX
 
 ### OpenUPM大陆镜像
 
-我们可以将上文中的`https://package.openupm.com`替换为淘宝npm镜像registry地址：`https://package.openupm.cn`
+我们可以将上文中的`https://package.openupm.com`替换为OpenUPM大陆地区镜像registry地址：`https://package.openupm.cn`
 
 <br>
 
