@@ -270,7 +270,7 @@ class DemoMeow : MonoBehaviour
 
 使用`TinaX.XComponent`包时，基类`XBehaviour`已内置了相关实现，我们可以在需要时调用`EnableUpdate()`来使`XBehaviour`的`Update()`方法生效，并在组件被销毁时（`OnDestroy`之前）自动取消注册。
 
-`FixedUpdate`和`LateUpdate`通用有对应的`EnableFixedUpdate()`和`EnableLateUpdate()`方法.
+`FixedUpdate`和`LateUpdate`同样有对应的`EnableFixedUpdate()`和`EnableLateUpdate()`方法.
 
 ``` csharp
 public override void Awake()
