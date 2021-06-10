@@ -206,6 +206,8 @@ TimeMachine对比Unity原生的Update等Magic Methods，具有如下区别或特
 2. **可控的调用次序：** 通过TimeMachine，我们可以在代码中自由控制在同一帧中，时间事件被调用的先后次序。（详见[#调用次序](#调用次序))
 3. **可控的方法开始与取消：** 通过TimeMachine，我们可以自由控制"Update()"方法什么时候被时间驱动，什么时候停止，一方面节省优化了性能，另一方面可以有效的避免杂乱的`void Update() { if(xxxx){ xxx } }`这类写法.
 
+<br>
+
 # 技巧与推荐用法
 
 ## 在生命周期结束时要取消注册
@@ -260,6 +262,27 @@ class DemoMeow : MonoBehaviour
 ```
 
 关于DisposableGroup的详细说明请参考文档：[DisposableGroup](/cmn-hans/core/manual/DisposableGroup.md)
+
+<br>
+<br>
+
+# XComponent
+
+使用`TinaX.XComponent`包时，基类`XBehaviour`已内置了相关实现，我们可以在需要时调用`EnableUpdate()`来使`XBehaviour`的`Update()`方法生效，并在组件被销毁时（`OnDestroy`之前）自动取消注册。
+
+`FixedUpdate`和`LateUpdate`通用有对应的`EnableFixedUpdate()`和`EnableLateUpdate()`方法.
+
+``` csharp
+public override void Awake()
+{
+    EnableUpdate();
+}
+
+public override void Update()
+{
+    //Todo...
+}
+```
 
 <br>
 <br>
