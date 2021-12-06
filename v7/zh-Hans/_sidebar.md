@@ -1,2 +1,4 @@
 - [TinaX](/zh-Hans/)
 - [预览版本](zh-Hans/preview)
+- TinaX 模块
+    - [TinaX.Core](zh-Hans/core/README)
