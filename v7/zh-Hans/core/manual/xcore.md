@@ -50,6 +50,7 @@ namespace Nekonya
         async void Start()
         {
             var core = XCore.CreateDefault()
+                .AddPuerts()
                 .AddILRuntime()
                 .AddVFS();
             await core.RunAsync();
@@ -57,3 +58,14 @@ namespace Nekonya
     }
 }
 ```
+
+如上代码，`.AddILRuntime()`为XCore添加了[ILRuntime](https://github.com/Ourpalm/ILRuntime ':ignore')第三方功能的接入, 使得框架可以使用C#语言进行热更新。
+
+`.AddPuerts()`为XCore添加了[Puerts](https://github.com/Tencent/puerts)第三方功能的接入，似的框架可以用`JavaScript`/`TypeScript`语言开发业务。 
+
+`.AddVFS()`为XCore添加了[TinaX.VFS](/zh-Hans/vfs/README) 模块，使得框架可以进行资产的动态加载和热更新。
+
+?> 请注意，上述的`AddILRuntime()`、`AddPuerts()` 和 `AddVFS()`代码均需要额外安装框架模块包才可使用，详请查阅相关文档。本文旨在介绍XCore相关功能。
+
+除此之外，我们也可以开发自己的模块加入XCore，以扩展框架的功能。
+

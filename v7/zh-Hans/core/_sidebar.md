@@ -1,3 +1,8 @@
 - [TinaX](/cmn-hans/)
-- [TinaX.Core](/zh-Hans/core/)
-- 手册
+- [TinaX.Core](/zh-Hans/core/README)
+- 基础知识
+    - [XCore](/zh-Hans/core/manual/xcore)
+    - [生命周期](/zh-Hans/core/manual/life_cycle)
+        - [XCore Behaviour](/zh-Hans/core/manual/xcore_behaviour)
+        - [IXBootstrap](/zh-Hans/core/manual/ixbootstrap)
+API参考
