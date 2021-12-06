@@ -5,4 +5,3 @@
     - [生命周期](/zh-Hans/core/manual/life_cycle)
         - [XCore Behaviour](/zh-Hans/core/manual/xcore_behaviour)
         - [IXBootstrap](/zh-Hans/core/manual/ixbootstrap)
-API参考
