@@ -6,3 +6,5 @@
         - [XCore Behaviour](/zh-Hans/core/manual/xcore_behaviour)
         - [IXBootstrap](/zh-Hans/core/manual/ixbootstrap)
     - [依赖关系注入](/zh-Hans/core/manual/dependency_injection)
+- Helper
+    - [日志颜色](/zh-Hans/core/helper/LogColorHelper)
