@@ -7,4 +7,4 @@
         - [IXBootstrap](/zh-Hans/core/manual/ixbootstrap)
     - [依赖关系注入](/zh-Hans/core/manual/dependency_injection)
 - Helper
-    - [日志颜色](/zh-Hans/core/helper/LogColorHelper)
+    - [日志颜色](/zh-Hans/core/helper/logColorHelper)
