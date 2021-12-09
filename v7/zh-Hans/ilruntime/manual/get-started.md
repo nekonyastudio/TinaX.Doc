@@ -30,10 +30,18 @@ await core.RunAsync();
 
 我们可以使用Visual Studio 、Jetbrains Rider等IDE工具创建类库，或使用命令行工具`dotnet new classlib -o projectName` 创建类库
 
-### 热更工程的.NET版本
+### 入口方法
 
-ILRuntime的官方示例中，热更工程为 `.NET Framework` 类库。而实测发现，使用`.NET Strandard`以及新版.NET（`.NET 6`）依然是运行的。
+我们可以在热更工程中编写一个入口方法：
 
-并且不一定是C#类库，使用.NET平台的其他语言如F#也是可以的。
-
-**但并不保证完全兼容，请在了解ILRuntime原理的前提下自行探索尝试**
+``` csharp
+using UnityEngine;
+namespace Nekonya;
+public class Entry
+{
+    public static void Start()
+    {
+        Debug.Log("Hello World");
+    }
+}
+```
