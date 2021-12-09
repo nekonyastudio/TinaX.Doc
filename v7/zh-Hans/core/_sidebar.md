@@ -1,4 +1,4 @@
-- [TinaX](/zh-Hans/)
+- [TinaX](/zh-Hans/#tinax)
 - [TinaX.Core](/zh-Hans/core/README)
 - 基础知识
     - [XCore](/zh-Hans/core/manual/xcore)
