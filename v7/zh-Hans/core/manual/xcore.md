@@ -69,3 +69,14 @@ namespace Nekonya
 
 除此之外，我们也可以开发自己的模块加入XCore，以扩展框架的功能。
 
+<br>
+
+## 获取XCore
+
+XCore的接口为`IXCore`，我们可以在[服务容器](/zh-Hans/core/manual/dependency_injection)中获得它，也可以通过静态方法获得：
+
+``` csharp
+XCore.MainInstance
+```
+
+XCore可以认为是一个全局单例，但它的实现并不是一个完全严格的单例模式，在一些特殊情况下，可以出现多个XCore实例，但通常并不建议这么做。
