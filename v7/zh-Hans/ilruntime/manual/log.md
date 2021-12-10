@@ -39,7 +39,7 @@ TinaX默认会给所有从热更工程中输出的日志打印其在热更工程
 
 ![1639125456644](log.assets/1639125456644.png)
 
-### 设置堆栈跟踪
+### 设置堆栈跟踪 <!-- {docsify-ignore} -->
 
 打印堆栈跟踪信息有助于调试，但自然也会消耗更多资源，我们可以在代码中设置是否启用堆栈跟踪：
 ``` csharp
@@ -63,8 +63,9 @@ LogOptions.EnableLog = false;       //禁用"Log"级别（即 Debug.Log）日志
 LogOptions.EnableWarning = true;    //启用"Warning"级别（即 Debug.Warning）日志
 LogOptions.EnableError = true;      //启用"Error"级别（即 Debug.Error）日志
 ```
+<br>
 
-### LogOptions的Log
+## LogOptions的Log
 
 为了方便调试追踪，如果在代码中设置了`LogOptions`类中诸如日志开关之类的敏感设置，会在Console中产生对应的Log并输出该操作的堆栈跟踪信息。
 
