@@ -7,6 +7,7 @@
     - [入口方法](/zh-Hans/ilruntime/manual/entry-method)
     - [CLR绑定](/zh-Hans/ilruntime/manual/clr-bind)
     - [日志](/zh-Hans/ilruntime/manual/log)
+    - [LitJson集成](/zh-Hans/ilruntime/manual/litjson)
 - 高级
     - [Assembly加载器](/zh-Hans/ilruntime/advanced/AssemblyLoader)
     - [可空引用类型](/zh-Hans/ilruntime/advanced/nullable)

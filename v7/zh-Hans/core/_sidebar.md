@@ -8,3 +8,5 @@
     - [依赖关系注入](/zh-Hans/core/manual/dependency_injection)
 - Helper
     - [日志颜色](/zh-Hans/core/helper/logColorHelper)
+- 高级
+    - [配置资产深入](/zh-Hans/core/advanced/config-asset)

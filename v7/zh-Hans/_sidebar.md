@@ -6,4 +6,7 @@
         - [TinaX.ILRuntime](zh-Hans/ilruntime/README)
         - [TinaX.Puerts](zh-Hans/puerts/README)
         - [TinaX.Lua](zh-Hans/xlua/README)
-    - [资产套件](zh-Hans/common/Assets)
+    - [资产套件](zh-Hans/common/modules#assets)
+- 手册
+    - [配置资产](zh-Hans/common/manual/config-asset)
+    - [资产管理](zh-Hans/common/manual/asset-management)
