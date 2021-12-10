@@ -73,6 +73,10 @@ namespace Nekonya.AssemblyLoader
 !> 以上代码仅可在Editor环境下运行，不可用于生产环境，仅作演示。 
 
 
+上述代码`LoadAssembly`方法的参数`AssemblyLoadInfo`接收的数据与Project Settings窗口中`TinaX > ILRuntime`页面中“Assembly 加载列表”项中配置的内容一致。
+
+TinaX框架自带的资产管理系统使用的加载路径与编辑器下的资产路径（`Assets/xxx/xx.xx`）一致，因此本文档的各示例中设置的路径均为`Assets/xxx`的格式。实际上设置窗口中配置的加载路径可以自行决定的，只要自己写的加载代码能认识它就行。
+
 ## 设置使用自定义Assembly加载器
 
 根据上述代码，右键`Create > Meow > MyAssemblyLoader`在工程中创建资产, 打开`Project Settings`设置窗口，将创建的资产拖拽设置到如下图所示位置.
