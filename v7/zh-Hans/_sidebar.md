@@ -11,3 +11,4 @@
 - **手册**
     - [配置资产](zh-Hans/common/manual/config-asset)
     - [资产管理](zh-Hans/common/manual/asset-management)
+    - [异常处理](zh-Hans/common/manual/exceptions)
