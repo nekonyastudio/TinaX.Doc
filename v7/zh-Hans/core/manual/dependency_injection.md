@@ -186,3 +186,28 @@ public class Driver
 默认情况下，如果标记了`[Inject]`的属性类型不存在于服务容器的话，向服务容器获取`Driver`服务时会抛出异常，我们把特性修改成`[Inject(Nullable = true)]`的话，服务容器则会忽略对这个属性的注入而不会抛出异常。
 
 !> 注意，属性注入过程发生在构造函数之后，如果在构造函数中尝试访问它们的话，它们必然是空的。
+
+<br>
+
+## 相关功能
+
+### 创建实例
+
+我看可以用以下方法直接创建实例
+
+``` csharp
+var instance = (TargetType)services.CreateInstance(typeof(TargetType));
+```
+
+创建过程中会对构造函数和属性进行依赖注入。
+
+<br>
+
+### 注入已存在对象
+
+如果我们有一个已存在的对象，我们可以调用以下方法进行属性注入。
+
+``` csharp
+var instance = new TargetType(); 
+services.Inject(instance);
+```

@@ -8,6 +8,7 @@
         - [TinaX.Puerts](zh-Hans/puerts/README)
         - [TinaX.Lua](zh-Hans/xlua/README)
     - [资产套件](zh-Hans/common/modules#assets)
+    - [UI套件](zh-Hans/uikit/README)
 - **手册**
     - [配置资产](zh-Hans/common/manual/config-asset)
     - [资产管理](zh-Hans/common/manual/asset-management)

@@ -11,7 +11,10 @@
 
 TinaX Framework 是基于Unity引擎的简单、完整的、开箱即用的开发框架。TinaX的目标是制作一个可以让一个团队、公司“从小用到大”的框架。
 
-?> 大陆地区用户：本文档站点托管于`GitHub Pages`, 部分地区用户可能无法正常加载文档中的图片。我们已通过CDN尽可能解决该问题，如果您所在的地区依然无法加载图片，请尝试访问该文档的镜像站点：[tinax.nekonya.io](https://tinax.nekonya.io) 或[Gitee站点](https://nekonyas.gitee.io/tinax.doc)
+?> 大陆地区用户：本文档站点托管于`GitHub Pages`, 部分地区用户可能无法正常加载文档中的图片。我们已通过CDN尽可能解决该问题，如果您所在的地区依然无法加载图片，请尝试访问该文档的镜像站点：[tinax.nekonya.io](https://tinax.nekonya.io)
+
+
+?> **预览版本前瞻**<br>您正在访问的是TinaX正式版本文档。全新的TinaX版本正在开发中，您也可以[点击此处](/v7/index.html#/zh-Hans/ ':ignore :target=_self')访问预览版本的文档内容以了解新内容。
 
 <br>
 
