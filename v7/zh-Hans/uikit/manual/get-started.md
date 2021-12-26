@@ -1,88 +1,122 @@
-# 开始使用TinaX.UIKit
+# 开始使用UIKit
 
-本文将介绍一些UIKit相关的基本概念。
-
-## UI系统
-
-当前，Unity生态中有很多UI方案，如第一方的uGUI（Unity UI）、IMGUI、UI Toolkit, 如第三方的NGUI（Next-Gen UI kit）、FairyGUI等。
-
-它们本身有的自称UI系统，有的自称UI框架、有的自称UI解决方案，为了避免混乱，本文档中这些事物我们都称之为`UI系统`。
-
-## UIKit 提供者
-
-UIKit模块是作为业务开发框架中的UI框架，对业务UI进行了一些概念定义和规范，只有一些纯逻辑层面的东西，并没有针对某个具体的`UI系统`开发功能。或者说，UIKit是一个抽象的框架，没法直接拿来用。
-
-因此，在实际使用中，我们还需要另一个具体包含了`UI系统`相关功能的模块来为UIKit提供具体的实现，这种模块我们称之为`UIKit提供者`。
-
-TinaX 框架中有基于 uGUI（Unity UI）开发的UIKit 提供者：[TinaX.UIKit.UGUI](/zh-Hans/uikit/ugui/README)，为开发者提供一个开箱即用的UI方案。
-
-但在使用`TinaX.UIKit.UGUI`模块之前，请继续阅读完本文档，了解一些UIKit的通用约定概念。
+?> 在开始之前，请阅读[TinaX.UIKit基本概念](/zh-Hans/uikit/manual/basic)。
 
 
-## UI Page
+## 添加模块
 
-UIKit约定的UI基本单位是Page（页）。我们对UI的绝大多数操作（加载UI、隐藏显示UI、关闭UI等）都是以页来处理的。
+安装UIKit包之后，我们需要调用`.AddUIKit()`方法将其注册到框架的[XCore](/zh-Hans/core/manual/xcore)中。
 
-一个 UI Page之下，又细分以下概念：
+``` csharp
+var core = XCore.CreateDefault()
+    .AddUIKit(); //添加TinaX.UIKit模块功能到框架中
+await core.RunAsync();
+```
 
-### Page View
+不过通常情况下这还不够，因为UIKit是一个不包含具体UI系统实现的抽象框架，我们需要配合诸如[TinaX.UIKit.UGUI](/zh-Hans/uikit/ugui/README)等模块使用，则注册代码类似这样：
 
-页视图，UIKit中定义的View是一个抽象的对象。而在具体的实现中，视图可能是不同的存在形式，如在`TinaX.UIKit.UGUI`模块中，视图就是一些GameObject（以及prefab）.
+``` csharp
+var core = XCore.CreateDefault()
+    .AddUIKit(builder => //设置UIKit功能
+    {
+        builder.AddUGUI(); //给UIKit添加uGUI支持（需要安装TinaX.UIKit.UGUI包）
+    });
+await core.RunAsync();
+```
+?> 通常，TinaX框架所有模块往XCore添加功能时的"AddXXX()"方法都位于`TinaX.Services`命名空间中。
 
-### Page Controller
+## 服务接口
 
-页控制器，与很多App、Web框架类似，从名字可以看出，这儿是我们编写逻辑代码的地方。
+TinaX.UIKit包对外提供的服务接口是`TinaX.UIKit.IUIKit`, 我们可以从服务容器中获取该接口：
 
-一页UI的所有相关逻辑，都应该编写在页控制器中。
+``` csharp
+using TinaX;
+using TinaX.UIKit;
 
-### MVC? MVVM? :id=mvc-or-mvvm
+var uikit = core.Services.Get<IUIKit>();
+```
 
-Page View 和 Page Controller 两者，一个显示内容，一个管理逻辑，实现了最基本的能把UI功能跑起来的结构。
+<br>
 
-但往往开发者们并不满足于此，会尝试引入一些UI的设计模式，如MVC、MVP、MVVM等等。
+!> 如基本概念所描述，UIKit包是一个不包含具体UI实现的抽象业务包，因此以下描述的代码操作是未经简化的，主要用于展示框架的工作原理。<br>对于开发者而言，通常在业务代码中使用具体`UIKit提供者`所提供的服务接口和API完成UI操作。
 
-UIKit本身为实践UI设计模式提供了一些便利，如依赖注入、数据双向绑定等基础功能。但本身并没有明确的规范如何实践UI设计模式。开发者可以自由在业务中实践格式设计模式，当然，不同的`UIKit 提供者`中可能会有更具体的规范和功能，如`TinaX.UIKit.UGUI`模块的文档中就包含了对uGUI实践不同设计模式的进一步探讨。
+## 打开UI页
 
+如[基本概念](/zh-Hans/uikit/manual/basic#open-ui-page)中所描述的，打开UI页实际上包括了获取UI页和推入UI Group两个步骤。
 
-## UI Group
+``` csharp
+var page = await uikit.GetUIPageAsync("page uri"); //获取UI Page （page uri将在下文讨论）
+var group = xxx; //Group从哪儿获取在下文讨论说明
+group.Push(page); //将page推入group，完成显示。
+```
 
-UI组是一个实现UI栈的对象。
+虽然我们说UIKit是一个不包含具体实现的抽象框架，但当我们项目中添加了具体的实现之后，依然可以只使用UIKit的`IUIKit`接口完成大多数操作。但涉及到具体特有功能（如让uGUI显示背景遮罩等），就需要使用对应UIKit提供者所提供的服务接口了。
 
-当我们在Unity 项目中打开了很多页UI之后，如果没有什么东西将这些UI管理起来的话，就会混乱。UI组就是这样一个存在，它将许多UI页管理起来，形成一个后进先出（LIFO）的堆栈，让UI之间有了层级关系。
+## Page控制器
 
-若要从一页打开另一页，程序会将新页推入堆栈，并将新页变成活跃页面。
+Page控制器是我们编写的UI逻辑代码，我们新建一个class并继承自`TinaX.UIKit.Page.Controller.PageControllerBase`.
 
-![将页面推送到导航堆栈](get-started.assets/pushing.png)
+``` csharp
+using TinaX.UIKit.Page.Controller;
+using UnityEngine;
 
-若要返回到前一页，程序会从堆栈中弹出当前页面，使位于顶层的页面称为活跃页面。
+public class HelloScreen : PageControllerBase
+{
+    void Awake()
+    {
+        Debug.Log("Hello, World");
+        //UIKit本身没有关于View的具体实现，因此只能搞些输出Hello world的操作.
+    }
+}
+```
 
-![从导航堆栈中弹出页面](get-started.assets/popping.png)
+之后在获取Page时传入控制器参数, 以使它与Page相关联。
 
-?> 上图来自微软 .NET Xamarin.Forms 框架的文档，虽然不是同一个东西，但原理相同。
+``` csharp
+var page = await uikit.GetUIPageAsync("page uri", new HelloScreen());
+```
 
-当然，UI Group**也可以**不是一个严格的后进先出的UI堆栈，可以从中间移除某个页面。
+`PageControllerBase`是一个抽象类，不继承MonoBehaviour，上文的`void Awake()`实现也与MonoBehaviour无关。
 
+## 导航器
 
-## UI 树
+我们可以在Page Controller中使用导航器来打开其他UI页.
 
-UI树不是一个具体对象，而是一个概念。
+``` csharp
+void Awake()
+{
+    await Navigation.OpenUIAsync("page uri", new OnePageController());
+}
+```
 
-UI Group自身也是一个UI Page, 因此一个UI Group本身也可以被当作是UI Page而被推入另一个UI Group, 形成了一个多叉树结构。
+注意这里打开UI使用的方法直接是`OpenUIAsync`而不是`GetUIPageAsync`，这是因为导航器具有上下文关系，它会自己把新的UI页推给与当前UI同级的UI Group中，而不需要如前文一样手动获取group再推入, 也因此，`OpenUIAsync`的传递参数会与`GetUIPageAsync`有所不同。
 
+## 构建器
 
-## UIKit Canvas
+上文我们演示代码中，OpenUI包括了"Page Uri"和"Page Controller"两个参数，而实际业务中，这些参数可能会非常多，比如是否使用UI背景遮罩、是否使用UI动画、是否给UI传递消息参数、自定义反射逻辑等等，于是这会导致调用`OpenUIAsync`方法从传入的参数非常多而混乱。
 
-UIKit Canvas其实直接叫Canvas就挺好的，但是容易与Unity中UGUI的Canvas概念混淆，于是加了个前缀叫UIKit Canvas.
+于是理所当然的，我们设计了一个方法的重写，把所有参数都放在一个class中传入
 
-UIKit Canvas是一个UI树的根级。
+``` csharp
+OpenUIAsync(OpenUIArgs args, CancellationToken cancellationToken = default);
+```
 
+这样调用起来，代码就类似下文这样：
 
-## 打开UI
+``` csharp
+void Awake()
+{
+    await Navigation.OpenUIAsync(new OpenUIArgs("page uri"){ PageController = new OnePageController() });
+}
+```
 
-“打开UI”是一个比较通俗的说法，实际上在UIKit中打开一页UI应该分为两个步骤：
-1. 创建UI Page
-    - 包括创建Page、Controller、View的关系结构
-    - 同时也可能需要加载资产（如uGUI是基于GameObject的，所以View需要加载prefab）
-2. 将创建好的UI Page推入UI Group，完成显示（`Display`）流程。
+我们在TinaX 6.x版本中确实也使用了这样的设计，但业务代码中出现这些代码也确实不够美观优雅。因此现在我们可以使用构建器来简化调用：
 
-多数情况下，UIKit有提供一些方法可以简化这两个步骤。
+``` csharp
+void Awake()
+{
+    await Navigation.CreateOpenUI("page uri") //创建构建器
+        .SetController<OnePageController>() //加入各种参数
+        .OpenUIAsync(); //执行OpenUI
+}
+```

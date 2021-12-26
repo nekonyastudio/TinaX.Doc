@@ -33,7 +33,7 @@ TinaX 框架第一方适配了如下运行时环境：
 
 ------
 
-| 模块 | 提供形式 | 包名 | 说明 |
-|------|---------|------|-----|
-|TinaX.Core | `package` | `io.nekonya.tinax.core` | 核心模块|
-|TinaX.ILRuntime | `package` | `io.nekonya.tinax.ilruntime` | ILRuntime支持模块 |
+| 模块 | 提供形式 | 包名 | 说明 | 链接 |
+|------|---------|------|-----|------|
+|TinaX.Core | `package` | `io.nekonya.tinax.core` | 核心模块|[Github](https://github.com/yomunsam/TinaX.Core)|
+|TinaX.ILRuntime | `package` | `io.nekonya.tinax.ilruntime` | ILRuntime支持模块 |[Github](https://github.com/yomunsam/TinaX.ILRuntime)|
