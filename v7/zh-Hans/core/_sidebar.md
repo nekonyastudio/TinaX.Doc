@@ -13,6 +13,7 @@
 - **Systems**
     - [概述](/zh-Hans/core/systems/README)
     - [通用管道](/zh-Hans/core/systems/pipeline)
+    - [事件中心](/zh-Hans/core/systems/event-center)
 - **高级**
     - [模块](/zh-Hans/core/advanced/module)
     - [配置资产深入](/zh-Hans/core/advanced/config-asset)
